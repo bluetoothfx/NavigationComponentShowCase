@@ -6,6 +6,28 @@
     android:layout_height="match_parent"
     tools:context=".ui.home.HomeFragment">
 
+    <Button
+        android:id="@+id/view_balances_button"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Check Balance"
+        app:layout_constraintBottom_toTopOf="@+id/text_home"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/pay_someone_button"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Send Money"
+        app:layout_constraintBottom_toTopOf="@+id/text_home"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view_balances_button" />
+
     <TextView
         android:id="@+id/text_home"
         android:layout_width="match_parent"
@@ -19,4 +41,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

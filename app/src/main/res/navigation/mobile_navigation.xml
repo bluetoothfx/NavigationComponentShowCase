@@ -9,7 +9,14 @@
         android:id="@+id/navigation_home"
         android:name="com.experiment.navigationcomponentshowcase.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_navigation_home_to_viewBalancesFragment"
+            app:destination="@id/viewBalancesFragment" />
+        <action
+            android:id="@+id/action_navigation_home_to_viewPeopleFragment"
+            app:destination="@id/viewPeopleFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_dashboard"
@@ -22,4 +29,14 @@
         android:name="com.experiment.navigationcomponentshowcase.ui.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
+    <fragment
+        android:id="@+id/viewBalancesFragment"
+        android:name="com.experiment.navigationcomponentshowcase.ui.checkbalance.ViewBalancesFragment"
+        android:label="Balances"
+        tools:layout="@layout/fragment_check_balances" />
+    <fragment
+        android:id="@+id/viewPeopleFragment"
+        android:name="com.experiment.navigationcomponentshowcase.ui.sendmoney.ViewPeopleFragment"
+        android:label="Contacts"
+        tools:layout="@layout/fragment_view_people" />
 </navigation>

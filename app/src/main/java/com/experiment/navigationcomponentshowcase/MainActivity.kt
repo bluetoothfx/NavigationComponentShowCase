@@ -15,14 +15,23 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         //getting bottom navigation view reference
-        val navView: BottomNavigationView = findViewById(R.id.nav_view)
+        val bottomNavView: BottomNavigationView = findViewById(R.id.nav_view)
 
+        //getting reference of hosting fragment
         val navController = findNavController(R.id.nav_host_fragment)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        val appBarConfiguration = AppBarConfiguration(setOf(
-                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications))
+
+        // Passing each menu ID as a set of Ids because each menu should be considered as top level destinations.
+        val appBarConfiguration = AppBarConfiguration(setOf(R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications))
         setupActionBarWithNavController(navController, appBarConfiguration)
-        navView.setupWithNavController(navController)
+
+        //Alternative approach to setup ActionBarWithNavController -- comment out previous 2 lines
+        //setupActionBarWithNavController(navController, AppBarConfiguration(bottomNavView.menu))
+
+        //setup navigation component with bottom nav
+        bottomNavView.setupWithNavController(navController)
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        return findNavController(R.id.nav_host_fragment).navigateUp()
     }
 }

@@ -38,5 +38,49 @@
         android:id="@+id/viewPeopleFragment"
         android:name="com.experiment.navigationcomponentshowcase.ui.sendmoney.ViewPeopleFragment"
         android:label="Contacts"
-        tools:layout="@layout/fragment_view_people" />
+        tools:layout="@layout/fragment_view_people">
+        <action
+            android:id="@+id/action_viewPeopleFragment_to_payContactFragment"
+            app:destination="@id/payContactFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/payContactFragment"
+        android:name="com.experiment.navigationcomponentshowcase.ui.sendmoney.PayContactFragment"
+        android:label="PayContactFragment"
+        tools:layout="@layout/fragment_pay_contact">
+        <argument
+            android:name="personName"
+            android:defaultValue="default"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_payContactFragment_to_viewDisclaimerFragment"
+            app:destination="@id/viewDisclaimerFragment" />
+        <action
+            android:id="@+id/action_payContactFragment_to_paymentCompleteFragment"
+            app:destination="@id/paymentCompleteFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/viewDisclaimerFragment"
+        android:name="com.experiment.navigationcomponentshowcase.ui.sendmoney.ViewDisclaimerFragment"
+        android:label="ViewDisclaimerFragment"
+        tools:layout="@layout/fragment_view_disclaimer" />
+    <fragment
+        android:id="@+id/paymentCompleteFragment"
+        android:name="com.experiment.navigationcomponentshowcase.ui.sendmoney.PaymentCompleteFragment"
+        android:label="PaymentCompleteFragment"
+        tools:layout="@layout/fragment_payment_complete" >
+        <argument
+            android:name="person_name"
+            app:argType="string" />
+        <argument android:name="from_account_number"
+            app:argType="string" />
+        <argument
+            android:name="amount"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_paymentCompleteFragment_to_navigation_home"
+            app:destination="@id/navigation_home"
+            app:popUpTo="@id/navigation_home"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>

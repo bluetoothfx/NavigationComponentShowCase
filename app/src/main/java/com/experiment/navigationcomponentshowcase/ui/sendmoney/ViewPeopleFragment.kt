@@ -15,7 +15,11 @@ import kotlinx.android.synthetic.main.fragment_view_people.*
  */
 class ViewPeopleFragment : Fragment() {
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         return inflater.inflate(R.layout.fragment_view_people, container, false)
     }
 
@@ -24,38 +28,44 @@ class ViewPeopleFragment : Fragment() {
         val adapter = PeopleAdapter()
         adapter.setItems(PEOPLE)
         adapter.setOnItemClickedListener { name ->
-           // val directions = ViewPeopleFragmentDirections.actionViewPeopleFragmentToPayPersonFragment(name)
-           // findNavController().navigate(directions)
+             val directions = ViewPeopleFragmentDirections.actionViewPeopleFragmentToPayContactFragment(name)
+             findNavController().navigate(directions)
         }
         people_recycler_view.adapter = adapter
     }
 
     private companion object {
         private val PEOPLE = listOf(
-                "Kaelan Puckett",
-                "Salim Bevan",
-                "Alisha Lambert",
-                "Leland Johnston",
-                "Mared Logan",
-                "Kit Summers",
-                "Kyran Pearson",
-                "Aaliya O'Sullivan",
-                "Saffa Davies",
-                "Muhammad Villalobos",
-                "Angelica Crouch",
-                "Collette Boyd",
-                "Issac Oakley",
-                "Alaina Solis",
-                "Marianne Brookes",
-                "Jon Rowe",
-                "Aryaan Vasquez",
-                "Virginia Devlin",
-                "Minnie Wright",
-                "Chandni Hale",
-                "Jacque Snider",
-                "Aniqa Potts",
-                "Esmee Spence",
-                "Kealan O'Moore",
-                "Summer Lopez")
+            "Jaleesa Callaghan",
+            "Claretta Zabala",
+            "Isaias Eckel",
+            "Mickie Messick",
+            "Delicia Escoto",
+            "Gertrude Choy",
+            "Cherly Solem",
+            "Robert Lupi",
+            "Belen Picou",
+            "Tyra Chadwell",
+            "Chae Cammarata",
+            "Lourdes Artis",
+            "Latrice Hennings",
+            "Bok Arend",
+            "Beth Wentworth",
+            "Virgilio Bruneau",
+            "Lekisha Sobel",
+            "Katelynn Hathcock",
+            "Jamel Meister",
+            "Delsie Mosser",
+            "Merideth Stickel",
+            "Jermaine Goncalves",
+            "Bruno Oldham",
+            "Ethelene Budge",
+            "Willy Wells",
+            "Karol Galvin",
+            "Lanell Pendley",
+            "Thomas Granier",
+            "Kylee Shavers",
+            "Eufemia Mccully"
+        )
     }
 }

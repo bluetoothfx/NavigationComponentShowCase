@@ -40,6 +40,5 @@ class HomeFragment : Fragment() {
         pay_someone_button.setOnClickListener {
             findNavController().navigate(R.id.viewPeopleFragment)
         }
-
     }
 }

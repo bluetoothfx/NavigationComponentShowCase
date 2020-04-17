@@ -56,7 +56,6 @@ class MainActivity : AppCompatActivity() {
         else{
 
             if (doubleBackToExitPressedOnce && navController.currentDestination?.label == "Home") {
-                // add your code here
                 super.onBackPressed()
                 return
             }

@@ -2,13 +2,17 @@ package com.experiment.navigationcomponentshowcase
 
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import android.widget.Toast
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.experiment.navigationcomponentshowcase.ui.home.HomeFragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,7 +27,13 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment)
 
         // Passing each menu ID as a set of Ids because each menu should be considered as top level destinations.
-        val appBarConfiguration = AppBarConfiguration(setOf(R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications))
+        val appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.navigation_home,
+                R.id.navigation_dashboard,
+                R.id.navigation_notifications
+            )
+        )
         setupActionBarWithNavController(navController, appBarConfiguration)
 
         //Alternative approach to setup ActionBarWithNavController -- comment out previous 2 lines
@@ -35,5 +45,27 @@ class MainActivity : AppCompatActivity() {
 
     override fun onSupportNavigateUp(): Boolean {
         return findNavController(R.id.nav_host_fragment).navigateUp()
+    }
+
+    private var doubleBackToExitPressedOnce = false
+    override fun onBackPressed() {
+        var navController : NavController = Navigation.findNavController(this, R.id.nav_host_fragment)
+
+        if(navController.currentDestination?.label != "Home")
+            super.onBackPressed()
+        else{
+
+            if (doubleBackToExitPressedOnce && navController.currentDestination?.label == "Home") {
+                // add your code here
+                super.onBackPressed()
+                return
+            }
+            this.doubleBackToExitPressedOnce = true
+            Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show()
+
+            Handler().postDelayed(Runnable {
+                doubleBackToExitPressedOnce = false
+            }, 2000)
+        }
     }
 }

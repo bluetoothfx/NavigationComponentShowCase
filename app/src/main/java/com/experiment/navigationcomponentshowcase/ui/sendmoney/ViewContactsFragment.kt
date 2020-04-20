@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.fragment_view_people.*
 /**
  * See the project README for the equivalent Java code.
  */
-class ViewPeopleFragment : Fragment() {
+class ViewContactsFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,7 +28,7 @@ class ViewPeopleFragment : Fragment() {
         val adapter = PeopleAdapter()
         adapter.setItems(PEOPLE)
         adapter.setOnItemClickedListener { name ->
-             val directions = ViewPeopleFragmentDirections.actionViewPeopleFragmentToPayContactFragment(name)
+             val directions = ViewContactsFragmentDirections.actionViewPeopleFragmentToPayContactFragment(name)
              findNavController().navigate(directions)
         }
         people_recycler_view.adapter = adapter

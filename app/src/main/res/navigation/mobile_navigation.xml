@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@id/splashFragment">
 
     <fragment
         android:id="@+id/navigation_home"
@@ -36,7 +36,7 @@
         tools:layout="@layout/fragment_check_balances" />
     <fragment
         android:id="@+id/viewPeopleFragment"
-        android:name="com.experiment.navigationcomponentshowcase.ui.sendmoney.ViewPeopleFragment"
+        android:name="com.experiment.navigationcomponentshowcase.ui.sendmoney.ViewContactsFragment"
         android:label="Contacts"
         tools:layout="@layout/fragment_view_people">
         <action
@@ -68,11 +68,12 @@
         android:id="@+id/paymentCompleteFragment"
         android:name="com.experiment.navigationcomponentshowcase.ui.sendmoney.PaymentCompleteFragment"
         android:label="PaymentCompleteFragment"
-        tools:layout="@layout/fragment_payment_complete" >
+        tools:layout="@layout/fragment_payment_complete">
         <argument
             android:name="person_name"
             app:argType="string" />
-        <argument android:name="from_account_number"
+        <argument
+            android:name="from_account_number"
             app:argType="string" />
         <argument
             android:name="amount"
@@ -81,6 +82,40 @@
             android:id="@+id/action_paymentCompleteFragment_to_navigation_home"
             app:destination="@id/navigation_home"
             app:popUpTo="@id/navigation_home"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.experiment.navigationcomponentshowcase.ui.splash.SplashFragment"
+        android:label="SplashFragment"
+        tools:layout="@layout/fragment_splash">
+        <action
+            android:id="@+id/action_splashFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.experiment.navigationcomponentshowcase.ui.auth.login.LoginFragment"
+        android:label="LoginFragment"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginFragment_to_navigation_home"
+            app:destination="@id/navigation_home"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_loginFragment_to_registrationFragment"
+            app:destination="@id/registrationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registrationFragment"
+        android:name="com.experiment.navigationcomponentshowcase.ui.auth.registration.RegistrationFragment"
+        android:label="RegistrationFragment"
+        tools:layout="@layout/fragment_registration" >
+        <action
+            android:id="@+id/action_registrationFragment_to_navigation_home"
+            app:destination="@id/navigation_home"
+            app:popUpTo="@id/splashFragment"
             app:popUpToInclusive="true" />
     </fragment>
 </navigation>

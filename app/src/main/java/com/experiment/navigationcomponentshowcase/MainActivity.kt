@@ -58,8 +58,9 @@ class MainActivity : AppCompatActivity() {
                 bottomNavView.visibility = View.GONE
                 supportActionBar?.hide()
             } else if (destination.id == R.id.payContactFragment || destination.id == R.id.viewPeopleFragment ||
-                       destination.id == R.id.payContactFragment || destination.id == R.id.paymentCompleteFragment ||
-                       destination.id == R.id.viewDisclaimerFragment) {
+                destination.id == R.id.payContactFragment || destination.id == R.id.paymentCompleteFragment ||
+                destination.id == R.id.viewDisclaimerFragment
+            ) {
                 bottomNavView.visibility = View.GONE
             } else {
                 bottomNavView.visibility = View.VISIBLE
@@ -77,7 +78,12 @@ class MainActivity : AppCompatActivity() {
         var navController: NavController =
             Navigation.findNavController(this, R.id.nav_host_fragment)
 
-        if (navController.currentDestination?.label != "Home")
+        // region default implementation
+        super.onBackPressed()
+        // endregion
+
+        //region 1st Implementation - with double tap exit (only when Home is visible)
+        /*if (navController.currentDestination?.label != "Home")
             super.onBackPressed()
         else {
 
@@ -91,6 +97,24 @@ class MainActivity : AppCompatActivity() {
             Handler().postDelayed(Runnable {
                 doubleBackToExitPressedOnce = false
             }, 2000)
-        }
+        }*/
+        // endregion
+
+        //region 2nd Implementation - with double tap exit (only when no more back is possible)
+        /*var result: Boolean = navController.popBackStack()
+        Log.v("TAG", "$result ${navController.currentDestination?.label}")
+        if (!result) {
+            if (doubleBackToExitPressedOnce) {
+                super.onBackPressed()
+                return
+            }
+            this.doubleBackToExitPressedOnce = true
+            Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show()
+
+            Handler().postDelayed(Runnable {
+                doubleBackToExitPressedOnce = false
+            }, 2000)
+        }*/
+        //endregion
     }
 }
